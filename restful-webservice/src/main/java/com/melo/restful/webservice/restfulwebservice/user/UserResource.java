@@ -32,4 +32,12 @@ public class UserResource {
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId()).toUri();
         return ResponseEntity.created(location).build();
     }
+    @DeleteMapping(path = "/users/{id}")
+    public User deleteUser(@PathVariable int id){
+        User user=service.deleteById(id);
+        if(user==null){
+            throw new UserNotFoundException("id-"+id);
+        }
+        return user;
+    }
 }
