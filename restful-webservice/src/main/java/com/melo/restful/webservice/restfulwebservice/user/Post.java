@@ -1,5 +1,7 @@
 package com.melo.restful.webservice.restfulwebservice.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,7 @@ public class Post {
     private Integer id;
     private String description;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private User user;
 
     public Integer getId() {
